@@ -15,63 +15,143 @@
     body {
       background-color: #f9f9f9;
       color: #222;
+    }
+
+    header {
+      background: #fff;
+      padding: 1rem 2rem;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover {
+      border-color: #222;
     }
 
     .container {
-      max-width: 600px;
-      text-align: center;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h1, h2 {
       margin-bottom: 1rem;
     }
 
     p {
       font-size: 1.125rem;
       line-height: 1.6;
-      margin-bottom: 1.5rem;
     }
 
-    a {
-      text-decoration: none;
-      color: #222;
-      border-bottom: 2px solid #222;
-      transition: all 0.3s ease;
+    #clock {
+      font-size: 1.5rem;
+      font-weight: bold;
     }
 
-    a:hover {
-      color: #555;
-      border-bottom-color: #555;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #222;
+      color: #fff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #444;
     }
 
     footer {
-      margin-top: 2rem;
+      text-align: center;
       font-size: 0.875rem;
       color: #aaa;
+      margin: 2rem 0;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div><strong>Raphael Angelo</strong></div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#bio">Bio</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
   <div class="container">
-    <h1>Raphael Angelo</h1>
-    <p>
-      Designer gráfico, fotógrafo e contador de histórias visuais. <br>
-      Crio imagens, ideias e conexões — com o pé no presente e o olho no detalhe.
-    </p>
-    <p>
-      Fundador do <a href="https://maisumcafe.com" target="_blank">maisumcafe.com</a>.<br>
-      Curioso por natureza, apaixonado por cultura urbana e movido a café.
-    </p>
-    <footer>
-      © Raphael Angelo – 2025
-    </footer>
+    <section id="home">
+      <h2>Relógio em tempo real</h2>
+      <div id="clock">00:00:00</div>
+    </section>
+
+    <section id="bio">
+      <h2>Sobre mim</h2>
+      <p>
+        Designer gráfico, fotógrafo e contador de histórias visuais.<br>
+        Crio imagens, ideias e conexões — com o pé no presente e o olho no detalhe.
+      </p>
+      <p>
+        Fundador do <a href="https://maisumcafe.com" target="_blank">maisumcafe.com</a>.<br>
+        Curioso por natureza, apaixonado por cultura urbana e movido a café.
+      </p>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+      <form>
+        <input type="text" name="nome" placeholder="Seu nome" required>
+        <input type="email" name="email" placeholder="Seu email" required>
+        <textarea name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
   </div>
+
+  <footer>
+    © Raphael Angelo – 2025
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('pt-BR');
+      document.getElementById('clock').textContent = time;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 </body>
 </html>
